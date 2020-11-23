@@ -38,14 +38,37 @@
                     <a href="{% url 'photo:detail' object.id %}" class="card-link">댓글달기</a>
                     <a href="{% url 'photo:update' object.id %}" class="card-link">수정하기</a>
                     <a href="{% url 'photo:delete' object.id %}" class="card-link">삭제하기</a>
-
                 </div>
-
             </div>
             {% endfor %}
 
         </div>
-        <div class="col"></div>
+        
+
+        <div class="col">
+            {% if user.is_authenticated %}
+            {% load static %}
+            <div class="card" style="">
+                <img src="{% static 'images/profile.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.username}}</h5>
+                    <p class="card-text">회원님의 게시물을 확인해보세요!</p>
+                    <a href="{% url 'photo:mylist' %}" class="btn btn-primary">MY PAGE 이동 </a>
+                </div>
+            </div>
+            {% else %}
+            {% load static %}
+            <div class="card" style="">
+                <img src="{% static 'images/unknown.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">unknown</h5>
+                    <p class="card-text">회원님의 게시물을 확인해보세요!</p>
+                    <a href="{% url 'photo:mylist' %}" class="btn btn-primary">MY PAGE 이동 </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
     </div>
 </div>
 {% endblock %}

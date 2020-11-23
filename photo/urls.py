@@ -10,6 +10,9 @@ urlpatterns = [
     path("update/<int:pk>",PhotoUpdate.as_view(), name='update'),
     path("delete/<int:pk>",PhotoDelete.as_view(), name='delete'),
     path("detail/<int:pk>",PhotoDetail.as_view(), name='detail'),
+    path("like/", PhotoLikeList.as_view(), name="like_list"),
+    path("favorite/", PhotoFavoriteList.as_view(),name="favorite_list"), 
+    path("mylist/",PhotoMyList.as_view(),name="mylist"),
     path("", PhotoList.as_view(), name='index'),
 ]
 
